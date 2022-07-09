@@ -1,0 +1,9 @@
+{
+"match" : [
+		{"pregAdopSist": { "pregunta": {"pregunta": "tal"}, "respuesta": "si" },
+    	  	"pregOrganizacion": { "pregunta": {"pregunta": "orgTal"}, "respuesta":"si" },
+    	  	"calificable": { "nombre": "comodidad1", "valor": "1" },
+    	  	"preferencia": { "caracteristica": {"nombre": "caract"}, "valor": "2" }
+		}
+	  ]
+}

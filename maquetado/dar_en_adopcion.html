@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="icon" href="/img/icon.ico">
+    <meta charset="utf-8">
+    <title>Rescate Patitas</title>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div>
+            <a href="index.html"> <img src="img/logo.png" alt="logo-header"> </a>
+        </div>
+        <div class="espacio-header"></div>
+        <div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/usuarios.html">Perfil</a></li>
+                    <li> Acciones
+                        <ul id="menu_desplegable">
+                            <li><a href="/intencion_adopcion.html">Suscribirse a Adopciones</a></li>
+                            <li><a href="/mascota_perdida.html">Informar Mascota Perdida</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/organizaciones.html">Organizaciones</a></li>
+                    <li><a href="/mascotas.html">Tus Mascotas</a>
+                    <li><a href="/logout.html">Cerrar Sesion</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="form-container">
+
+            <div class="form-title-container">
+                <h3>Dar en Adopción - Formulario</h3>
+            </div>
+
+            <div>
+                -Aca meter el listado de las mascotas que se tiene para elegir-
+            </div>
+
+
+            <form style="grid-template-columns: auto;" action="index.html" method="post">
+                {{#each preguntas_sistema}}
+                <div class="grid-item">
+                    <label for="">{{pregunta}}</label>
+                    <textarea class="text-input" name="message" rows="2" cols="50"></textarea>
+                </div>
+                {{/each}}
+
+                {{#each preguntas_org}}
+                <div class="grid-item">
+                    <label for="">{{pregunta}}</label>
+                    <textarea class="text-input" name="message" rows="2" cols="50"></textarea>
+                </div>
+                {{/each}}
+
+                <div class="grid-item">
+                    <input type="submit" name="" value="GUARDAR" class="btn-container btn-submit">
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

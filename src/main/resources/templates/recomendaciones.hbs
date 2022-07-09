@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@700&display=swap"
+    rel="stylesheet">
+    <script src="https://kit.fontawesome.com/27517fada0.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="/js/generales.js"></script>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/estilos.css">
+  <link rel="icon" href="/img/icon.ico">
+  <meta charset="utf-8">
+  <title>Rescate Patitas</title>
+</head>
+
+<body>
+  <header>
+    <div>
+      <a href="/index"> <img src="img/logo.png" alt="logo-header"> </a>
+    </div>
+    <div class="espacio-header"></div>
+    <div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/usuarios">Perfil</a></li>
+          <li> Acciones
+            <ul id="menu_desplegable">
+              <li><a href="/intencion_adopcion">Suscribirse a Adopciones</a></li>
+              <li><a href="/mascota_perdida">Informar Mascota Perdida</a></li>
+              <li><a href="/dar_en_adopcion">Dar en Adopcion</a></li>
+            </ul>
+          </li>
+          <li><a href="/organizaciones">Organizaciones</a></li>
+          <li><a href="/mascotas">Tus Mascotas</a>
+          <li><a href="/logout">Cerrar Sesion</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <div class="form-container">
+        {{#each publicaciones}}
+        <div class="publicacion-box">
+
+          <div class="publicacion-title-container">
+          {{#if mascotaPerdida}}
+            <h3>Publicación Mascota Perdida</h3>
+          {{else if persona}}
+            <h3>Publicación Busqueda Adopción</h3>
+          {{else if mascota}}
+            <h3>Publicación Mascota En Adopción</h3>
+          {{/if}}
+
+          </div>
+          <div>
+
+          </div>
+            <!-- Inicio de Pub Mascota Perdida -->
+
+            {{#if mascotaPerdida}}
+            <form style="grid-template-columns: auto auto;" action="index" method="post">
+                <div class="grid-item">
+                    <label for="">Descripción</label>
+                    <label for="" style="font-weight: bold;">{{mascotaPerdida.estadoMascota}}</label>
+                </div>
+
+                <div class="grid-item" style="visibility:hidden;">
+                    <input type="text" name="" value="" class="text-input">
+                </div>
+
+                {{#each mascotaPerdida.rescatista.contactos}}
+                <div class="grid-item">
+                    <label for="">Email de Contacto</label>
+                    <label for="" style="font-weight: bold;">{{email}}</label>
+                </div>
+
+                <div class="grid-item">
+                    <label for="">Telefono de Contacto</label>
+                    <label for="" style="font-weight: bold;">{{telefono}}</label>
+                </div>
+                {{/each}}
+
+                <div class="grid-item">
+                    <label for="">Ubicación</label>
+                    <label for="" style="font-weight: bold;">{{mascotaPerdida.lugarDeAparicion}}</label>
+                </div>
+
+                <div class="grid-item" style="visibility:hidden;">
+                    <input type="text" name="" value="" class="text-input">
+                </div>
+
+                <div>
+                    <label for="myfile">Foto</label>
+                </div>
+
+                <div class="grid-item" style="visibility:hidden;">
+                    <input type="text" name="" value="" class="text-input">
+                </div>
+
+                <div></div>
+                <div class="grid-item">
+                  <button type="button" name="button" class="btn-gracias" onclick="gracias()">Adoptar</button>
+                </div>
+
+            </form>
+
+            <!--Inicio de Pub Busqueda Intencion Adopcion -->
+
+            {{else if persona}}
+
+              <form class="" action="index" method="post">
+
+                <div class="grid-item">
+                  <label for="">Nombre</label>
+                  <label for="" style="font-weight: bold;">{{persona.nombre}}</label>
+                </div>
+
+                <div class="grid-item">
+                  <label for="">Apellido</label>
+                  <label for="" style="font-weight: bold;">{{persona.apellido}}</label>
+                </div>
+
+                <div class="grid-item">
+                  <label for="">Nro Documento*</label>
+                  <label for="" style="font-weight: bold;">{{persona.documento.nroDoc}}</label>
+                </div>
+
+                <div class="grid-item">
+                  <label for="">Preferencias</label>
+                </div>
+
+                <br>
+                <div class="grid-item">
+                  <label for="">Comodidades</label>
+                </div>
+
+              </form>
+
+            <!-- Inicio de Pub Dar En Adopción -->
+
+            {{else if mascota}}
+            <form style="grid-template-columns: auto;" action="index" method="post">
+
+                {{mascota.nombre}}
+                <!-- Deberían ir fotos ademas -->
+
+                {{#each preguntasSistema}}
+                <div class="grid-item">
+                    <label for="">{{pregunta.pregunta}}</label>
+                    <label for="" style="font-weight: bold;">{{respuesta}}</label>
+                </div>
+                {{/each}}
+
+                {{#each preguntasOrganizacion}}
+                <div class="grid-item">
+                    <label for="">{{pregunta.pregunta}}</label>
+                    <label for="" style="font-weight: bold;">{{respuesta}}</label>
+                </div>
+                {{/each}}
+
+              <div></div>
+              <div class="grid-item">
+                <button type="button" name="button" class="btn-gracias" onclick="gracias()">Adoptar</button>
+              </div>
+            </form>
+
+            {{/if}}
+            </form>
+          </div>
+
+        {{/each}}
+        </div>
+
+    </div>
+  </div>
+
+</body>
+
+<!-- ================= MODAL GRACIAS ================== -->
+<div class="modalEliminar modal" id="modalEliminar">
+  <div class="modalContent">
+    <input id="userId" type="hidden" value="">
+    <p>¡Gracias por adoptar a la mascota X!</p>
+    <button type="button" name="button" class="btn-close-modal" onclick="cerrarModal()"><i
+        class="fas fa-times-circle"></i></button>
+    <br>
+    <div class="">
+      <button type="button" name="button" class="btn-verde"><a href="/index" btn-submit">Aceptar</a></button>
+      <button type="button" name="button" class="btn-cancelar" onclick="cerrarModal()">Cancelar</button>
+    </div>
+  </div>
+</div>
+<!-- ================= FIN MODAL GRACIAS ================== -->
+
+</html>

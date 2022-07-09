@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@700&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/27517fada0.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="/js/generales.js"></script>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/estilos.css">
+  <link rel="icon" href="/img/icon.ico">
+  <meta charset="utf-8">
+  <title>Rescate Patitas</title>
+</head>
+<!-- Usuario Logeado -->
+<body>
+
+  {{#if persona}}
+  <header>
+    <div>
+      <a href="index"> <img src="img/logo.png" alt="logo-header"> </a>
+    </div>
+    <div class="espacio-header"></div>
+    <div>
+      <nav class="main-nav">
+        <ul>
+          <!-- <li><a href="/usuario/{{persona.id}}">Perfil</a></li> -->
+          <li><a href="/usuario">Perfil</a></li>
+          <li> Acciones
+            <ul id="menu_desplegable">
+              <li><a href="/intencion_adopcion">Suscribirse a Adopciones</a></li>
+              <li><a href="/mascota_perdida">Informar Mascota Perdida</a></li>
+              <li><a href="/dar_en_adopcion">Dar en Adopcion</a></li>
+            </ul>
+          </li>
+          <li><a href="/organizaciones">Organizaciones</a></li>
+          <li><a href="/mascotas">Tus Mascotas</a>
+          <li><a href="/logout">Cerrar Sesion</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Usuario no loggeado -->
+  {{else}}
+  <header>
+    <div>
+      <a href="index"> <img src="img/logo.png" alt="logo-header"> </a>
+    </div>
+    <div class="espacio-header"></div>
+    <div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/organizaciones">Organizaciones</a></li>
+          <li><a href="/login">Iniciar Sesion</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  {{/if}}
+  <!-- Usuario Admin
+
+  <header>
+    <div>
+      <a href="index"> <img src="img/logo.png" alt="logo-header"> </a>
+    </div>
+    <div class="espacio-header"></div>
+    <div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/usuarios">Usuarios</a></li>
+          <li><a href="/organizaciones">Organizaciones</a></li>
+          <li><a href="/logout">Cerrar Sesion</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  -->
+
+<!--===========================FIN HEADER!============================-->
+
+  <div class="main-container">
+    <div>
+      <ul>
+        <li><a href="/generar_recomendaciones">Generar Recomendaciones</a></li>
+      </ul>
+    </div>
+    <div class="form-container">
+      <div class="select-tipo-pub"><!-- TODO: Hacer que aparezca 1 solo tipo de publicacion en la pagina, recibir los
+                valores en back y asociar la traida de DB al tipo de publicacion -->
+        <!-- Creo que no necesito el form ya que no tengo ningun input y uso los <a> en el select -->
+        <form action="/" method="post">
+            <label for="filtro-pub">Filtrar por: </label>
+            <select onchange="location = this.value">
+                <option value="/">Select...</option>
+                <option value="/index?tipo=pubMascotaEnAdopcion">Publicaciones de Mascotas En Adopcion</option>
+                <option value="/index?tipo=pubBusquedaAdopcion">Publicaciones de Busqueda de Adopcion</option>
+                <option value="/index?tipo=pubMascotaPerdida">Publicaciones de Mascotas Perdidas</option>
+            </select>
+
+            <!-- <select name="filtro-publicaciones" onchange="">
+              <option value="pubMascotaEnAdopcion"><a href="/index?tipo=pubMascotaEnAdopcion">Publicaciones de Mascotas en Adopción</a></option>
+              <option value="pubMascotaPerdida"><a href="/index?tipo=pubMascotaPerdida">Publicaciones de Mascotas Perdidas</a></option>
+              <option value="pubBusquedaAdopcion"><a href="/?tipo=pubBusquedaAdopcion">Publicaciones de Adoptantes</a></option>
+            </select> -->
+        </form>
+      </div>
+
+      <div class="publicacion-box">
+        {{#each pubMascotaPerdida}}
+        <div class="publicacion-title-container">
+          <h3>Publicación Mascota Perdida</h3><br>
+        </div>
+
+        <div>
+        </div>
+
+        <!-- Inicio de Pub Mascota Perdida -->
+
+        <form style="grid-template-columns: auto auto;" action="index" method="post">
+          <div class="grid-item">
+            <label for="">Descripción</label>
+            <label for="" style="font-weight: bold;">{{mascotaPerdida.estadoMascota}}</label>
+          </div>
+
+          <div class="grid-item" style="visibility:hidden;">
+            <input type="text" name="" value="" class="text-input">
+          </div>
+
+          {{#each pubMascotaPerdida.rescatista.contactos}}
+          <div class="grid-item">
+            <label for="">Email de Contacto</label>
+            <label for="" style="font-weight: bold;">{{email}}</label>
+          </div>
+
+          <div class="grid-item">
+            <label for="">Telefono de Contacto</label>
+            <label for="" style="font-weight: bold;">{{telefono}}</label>
+          </div>
+          {{/each}}
+
+          <div class="grid-item">
+            <label for="">Ubicación</label>
+            <label for="" style="font-weight: bold;">{{mascotaPerdida.lugarDeAparicion}}</label>
+          </div>
+
+          <div class="grid-item" style="visibility:hidden;">
+            <input type="text" name="" value="" class="text-input">
+          </div>
+
+          <div>
+            <label for="myfile">Foto: </label>
+          </div>
+
+          <div></div>
+          <div class="grid-item">
+            <button type="button" name="button" class="btn-gracias" onclick="gracias()">Adoptar</button>
+          </div>
+
+        </form>
+
+        <div>
+        </div>
+
+        {{/each}}
+
+        <!--Inicio de Pub Busqueda Intencion Adopcion -->
+
+        {{#each pubBusquedaAdopcion}}
+
+        <div class="publicacion-title-container">
+          <h3>Publicación Busqueda Adopción</h3><br>
+        </div>
+
+        <div>
+        </div>
+
+        <form class="" action="index" method="post" style="grid-template-columns: auto auto;">
+
+          <div class="grid-item">
+            <label for="">Nombre</label>
+            <label for="" style="font-weight: bold;">{{persona.nombre}} {{persona.apellido}}</label>
+          </div>
+          <div class="grid-item">
+            <label for="">Nro Documento</label>
+            <label for="" style="font-weight: bold;">{{persona.nroDoc}}</label>
+          </div>
+
+          <div class="grid-item">
+            <label for="">Preferencias</label>
+            {{#each preferencias}}
+            <label for="" style="font-weight: bold;">{{caracteristica.nombre}}: {{valor}}</label>
+            {{/each}}
+          </div>
+
+
+          <div class="grid-item">
+            <label for="">Comodidades</label>
+            <!-- No anda el handlebars porque no le gusta que el tipo de la lista sea abstracto -->
+            <!-- {{#each calificables}}
+            <label for="" style="font-weight: bold;">
+              {{nombre}}{{#if valor}}: {{valor}}{{/if}}
+            </label>
+            {{/each}} -->
+          </div>
+
+        </form>
+
+        <div>
+        </div>
+
+        {{/each}}
+
+        <!-- Inicio de Pub Dar En Adopción -->
+        {{#if pubRecomendadas}}
+        {{#each pubRecomendadas}}
+        <div class="publicacion-title-container">
+          <h3>Recomendaciones de Adopción</h3>
+        </div>
+
+        <div>
+        </div>
+
+        <form style="grid-template-columns: auto auto;" action="index" method="post">
+
+          <div class="grid-item">
+            <label for="">Nombre de la mascota</label>
+            <label for="" style="font-weight: bold;">{{publicacion.mascota.nombre}}</label>
+          </div>
+
+          <div class="grid-item">
+            <label for="">Dueño</label>
+            <label for="" style="font-weight: bold;">{{publicacion.mascota.persona.nombre}} {{publicacion.mascota.persona.apellido}}</label>
+          </div>
+
+          {{#each publicacion.preguntasSistema}}
+          <div class="grid-item">
+            <label for="">{{pregunta.pregunta}}</label>
+            <label for="" style="font-weight: bold;">{{respuesta}}</label>
+          </div>
+          {{/each}}
+
+          {{#each publicacion.preguntasOrganizacion}}
+          <div class="grid-item">
+            <label for="">{{pregunta.pregunta}}</label>
+            <label for="" style="font-weight: bold;">{{respuesta}}</label>
+          </div>
+          {{/each}}
+
+          <div class="grid-item">
+            <button type="button" name="button" class="btn-gracias" onclick="gracias()">Adoptar</button>
+          </div>
+        </form>
+
+        <div>
+        </div>
+        {{/each}}
+        {{/if}}
+
+        {{#each pubMascotaEnAdopcion}}
+
+        <div class="publicacion-title-container">
+          <h3>Publicación Mascota En Adopción</h3>
+        </div>
+
+        <div>
+        </div>
+
+        <form style="grid-template-columns: auto auto;" action="index" method="post">
+
+          <div class="grid-item">
+            <label for="">Nombre de la mascota</label>
+            <label for="" style="font-weight: bold;">{{mascota.nombre}}</label>
+          </div>
+          <!-- Deberían ir fotos ademas -->
+          <div class="grid-item">
+            <label for="">Dueño</label>
+            <label for="" style="font-weight: bold;">{{mascota.persona.nombre}} {{mascota.persona.apellido}}</label>
+          </div>
+
+          {{#each preguntasSistema}}
+          <div class="grid-item">
+            <label for="">{{pregunta.pregunta}}</label>
+            <label for="" style="font-weight: bold;">{{respuesta}}</label>
+          </div>
+          {{/each}}
+
+          {{#each preguntasOrganizacion}}
+          <div class="grid-item">
+            <label for="">{{pregunta.pregunta}}</label>
+            <label for="" style="font-weight: bold;">{{respuesta}}</label>
+          </div>
+          {{/each}}
+
+          <div class="grid-item">
+            <button type="button" name="button" class="btn-gracias" onclick="gracias()">Adoptar</button>
+          </div>
+        </form>
+
+        <div>
+        </div>
+
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

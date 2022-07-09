@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@700&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/27517fada0.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="/js/generales.js"></script>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="icon" href="/img/icon.ico">
+  <meta charset="utf-8">
+  <title>Rescate Patitas</title>
+</head>
+
+<body>
+  {{#if persona}}
+  <header>
+    <div>
+      <a href="index"> <img src="img/logo.png" alt="logo-header"> </a>
+    </div>
+    <div class="espacio-header"></div>
+    <div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/usuario/{{persona.id}}">Perfil</a></li>
+          <li> Acciones
+            <ul id="menu_desplegable">
+              <li><a href="/intencion_adopcion">Suscribirse a Adopciones</a></li>
+              <li><a href="/mascota_perdida">Informar Mascota Perdida</a></li>
+              <li><a href="/dar_en_adopcion">Dar en Adopcion</a></li>
+            </ul>
+          </li>
+          <li><a href="/organizaciones">Organizaciones</a></li>
+          <li><a href="/mascotas">Tus Mascotas</a>
+          <li><a href="/logout">Cerrar Sesion</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="main-container">
+
+
+    <div class="transicion-box">
+      <div class="transicion-title-container">
+        <h3>¡Gracias por fijarte en esta mascota!</h3>
+      </div>
+
+      <div class="transicion-title-container">
+        <h6>El dueño/hogar se pondrá en contacto contigo muy pronto</h6>
+      </div>
+
+      <div>
+        <a href="/index" class="btn-container btn-submit-transicion">Volver</a>
+      </div>
+    </div>
+
+
+  </div>
+
+  {{else}}
+  <header>
+    <div>
+      <a href="index"> <img src="img/logo.png" alt="logo-header"> </a>
+    </div>
+    <div class="espacio-header"></div>
+    <div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/usuarios">Usuarios</a></li>
+          <li><a href="/organizaciones">Organizaciones</a></li>
+          <li><a href="/logout">Cerrar Sesion</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="main_container">
+    <div class="form-title-container">
+      <h3>Por qué un admin querría usar esta funcionalidad?</h3>
+    </div>
+  </div>
+
+  {{/if}}
+</body>

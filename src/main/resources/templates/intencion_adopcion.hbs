@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@700&display=swap"
+    rel="stylesheet">
+    <script src="https://kit.fontawesome.com/27517fada0.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="/js/generales.js"></script>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/estilos.css">
+  <link rel="icon" href="/img/icon.ico">
+  <meta charset="utf-8">
+  <title>Rescate Patitas</title>
+</head>
+
+<body>
+
+  {{#if persona}}
+  <header>
+    <div>
+      <a href="index"> <img src="img/logo.png" alt="logo-header"> </a>
+    </div>
+    <div class="espacio-header"></div>
+    <div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/usuario/{{persona.id}}">Perfil</a></li>
+          <li> Acciones
+            <ul id="menu_desplegable">
+              <li><a href="/intencion_adopcion">Suscribirse a Adopciones</a></li>
+              <li><a href="/mascota_perdida">Informar Mascota Perdida</a></li>
+              <li><a href="/dar_en_adopcion">Dar en Adopcion</a></li>
+            </ul>
+          </li>
+          <li><a href="/organizaciones">Organizaciones</a></li>
+          <li><a href="/mascotas">Tus Mascotas</a>
+          <li><a href="/logout">Cerrar Sesion</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENEDOR FORMULARIO -->
+  <div class="main-container">
+    <div class="form-container">
+      <div class="form-title-container">
+        <h3>Adopciones</h3>
+      </div>
+      <form class="" {{#if index}} method="post" {{else}} method="post" {{/if}}>
+
+        <div class="grid-item">
+          <label for="">Nombre*</label>
+          <input type="text" name="" class="text-input" {{#if usuario}} value="{{usuario.persona.nombre}}" {{/if}}>
+        </div>
+
+        <div class="grid-item">
+          <label for="">Apellido*</label>
+          <input type="text" name="" class="text-input" {{#if usuario}} value="{{usuario.persona.apellido}}" {{/if}}>
+        </div>
+
+        <div class="grid-item">
+          <label for="">Nro Documento*</label>
+          <input type="text" name="" class="text-input" {{#if usuario}} value="{{usuario.persona.apellido}}" {{/if}}>
+        </div>
+
+        <div class="grid-item">
+          <label for="">Preferencias</label>
+          <select name="" class="text-input">
+            <option value="">Color principal</option>
+            <option value="">Tipo</option>
+          </select>
+        </div>
+
+        <div class="grid-item">
+          <label for="">Preferencia</label>
+          <input type="text" name="" value="" class="text-input">
+        </div>
+        <br>
+        <div class="grid-item">
+          <label for="">Comodidades</label>
+          <select name="" class="text-input">
+            <option value="">Patio</option>
+            <option value="">Otros animales</option>
+          </select>
+        </div>
+
+        <div class="grid-item">
+          <label for="">Comodidad</label>
+          <input type="text" name="" value="" class="text-input">
+        </div>
+
+        <div class="grid-item">
+          <label for="" style="font-size: 12px; color: #8341a2; max-width:150px;padding-right:0px;">Los campos marcados
+            con (*) son obligatorios.</label>
+        </div>
+        <div class="grid-item" style="visibility:hidden;">
+          <input type="text" name="" value="" class="text-input">
+        </div>
+        <div class="grid-item">
+          <button type="button" name="button" class="btn-gracias" onclick="gracias()">GUARDAR</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {{else}}
+  <header>
+    <div>
+      <a href="index"> <img src="img/logo.png" alt="logo-header"> </a>
+    </div>
+    <div class="espacio-header"></div>
+    <div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/usuarios">Usuarios</a></li>
+          <li><a href="/organizaciones">Organizaciones</a></li>
+          <li><a href="/logout">Cerrar Sesion</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="main_container">
+    <div class="form-title-container">
+      <h3>Por qué un admin querría usar esta funcionalidad?</h3>
+    </div>
+  </div>
+
+  {{/if}}
+
+</body>
+
+
+
+<!-- ================= MODAL GRACIAS ================== -->
+<div class="modalEliminar modal" id="modalEliminar">
+  <div class="modalContent">
+    <input id="userId" type="hidden" value="">
+    <p>¡Gracias por registrar su intencion de adopcion!</p>
+    <button type="button" name="button" class="btn-close-modal" onclick="cerrarModal()"><i
+        class="fas fa-times-circle"></i></button>
+    <br>
+    <div class="">
+      <button type="button" name="button" class="btn-verde"><a href="/index" btn-submit">Aceptar</a></button>
+      <button type="button" name="button" class="btn-cancelar" onclick="cerrarModal()">Cancelar</button>
+    </div>
+  </div>
+</div>
+<!-- ================= FIN MODAL GRACIAS ================== -->
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://kit.fontawesome.com/27517fada0.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="/js/generales.js"></script>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="icon" href="img/logosolo.png">
+  <link rel="stylesheet" href="/css/estilos.css">
+  <title>Usuarios</title>
+</head>
+
+<body id="body">
+  <header>
+    <div>
+      <a href="index.html"> <img src="img/logo.png" alt="logo-header"> </a>
+    </div>
+    <div class="espacio-header"></div>
+    <div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/usuarios.html">Perfil</a></li>
+          <li> Acciones
+            <ul id="menu_desplegable">
+              <li><a href="/intencion_adopcion.html">Suscribirse a Adopciones</a></li>
+              <li><a href="/mascota_perdida.html">Informar Mascota Perdida</a></li>
+            </ul>
+          </li>
+          <li><a href="/organizaciones.html">Organizaciones</a></li>
+          <li><a href="/mascotas.html">Tus Mascotas</a>
+          <li><a href="/logout.html">Cerrar Sesion</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="main_container">
+    <div class="form-title-container">
+      <h3>Usuarios</h3>
+    </div>
+    <table class="tabla" id="tabla">
+      <thead>
+        <th>Nombre y Apellido</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>Documento</th>
+        <th>Usuario</th>
+        <th>Acciones</th>
+      </thead>
+      <tbody>
+        {{#each usuarios}}
+        <tr>
+          <td><i class="fas fa-user"></i> {{nombreYApellido}}</td>
+          <td>{{contacto.email}}</td>
+          <td>{{contacto.telefono}}</td>
+          <td>{{dni.nroDoc}}</td>
+          <td>{{usuario}}</td>
+          <td>
+            <a href="/usuario/{{id}}" name="button" style="margin:0px;" class="btn-table btn-border btn-border-blue"><i
+                class="far fa-eye"></i></a>
+            <a href="/usuario/{{id}}" name="button" class=" btn btn-edit"><i class="fas fa-user-edit"></i></a>
+            <button type="button" name="button" class="btn" onclick="confirmarEliminacion('{{id}}')"><i
+                class="fas fa-trash"></i></button>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</body>
+
+
+<!-- ================= MODAL ELIMINACION ================== -->
+<div class="modalEliminar modal" id="modalEliminar">
+  <div class="modalContent">
+    <input id="userId" type="hidden" value="">
+    <p>¿Desea eliminar el usuario?</p>
+    <button type="button" name="button" class="btn-close-modal" onclick="cerrarModal()"><i
+        class="fas fa-times-circle"></i></button>
+    <br>
+    <div class="">
+      <button type="button" name="button" class="btn-rojo" onclick="eliminarUsuario()">Eliminar</button>
+      <button type="button" name="button" class="btn-cancelar" onclick="cerrarModal()">Cancelar</button>
+    </div>
+  </div>
+</div>
+<!-- ================= FIN MODAL ELIMINACION ================== -->
+
+</html>

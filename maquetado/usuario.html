@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="icon" href="/img/icon.ico">
+  <meta charset="utf-8">
+  <title>Rescate Patitas</title>
+</head>
+
+<body>
+  <header>
+    <div>
+      <a href="index.html"> <img src="img/logo.png" alt="logo-header"> </a>
+    </div>
+    <div class="espacio-header"></div>
+    <div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/usuarios.html">Perfil</a></li>
+          <li> Acciones
+            <ul id="menu_desplegable">
+              <li><a href="/intencion_adopcion.html">Suscribirse a Adopciones</a></li>
+              <li><a href="/mascota_perdida.html">Informar Mascota Perdida</a></li>
+            </ul>
+          </li>
+          <li><a href="/organizaciones.html">Organizaciones</a></li>
+          <li><a href="/mascotas.html">Tus Mascotas</a>
+          <li><a href="/logout.html">Cerrar Sesion</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <div class="form-container">
+
+      <div class="form-title-container">
+        <h3>Usuario</h3>
+      </div>
+      <form class="" action="index.html" method="post">
+        <div class="grid-item">
+          <label for="">Nombre*</label>
+          <input type="text" name="" value="" class="text-input">
+        </div>
+
+        <div class="grid-item">
+          <label for="">Apellido*</label>
+          <input type="text" name="" value="" class="text-input">
+        </div>
+
+        <div class="grid-item">
+          <label for="">Dirección</label>
+          <input type="text" name="" value="" class="text-input">
+        </div>
+
+        <div class="grid-item">
+          <label for="">Tipo Documento</label>
+          <select name="" class="text-input">
+            <option value="">DNI</option>
+            <option value="">Pasaporte</option>
+            <option value="">Cedula</option>
+          </select>
+        </div>
+
+        <div class="grid-item">
+          <label for="">Nro Documento</label>
+          <input type="text" name="" value="" class="text-input">
+        </div>
+
+        <div class="grid-item">
+          <label for="">Fecha de Nacimiento*</label>
+          <input type="date" class="text-input" name="birthdate" required>
+        </div>
+
+        <div class="grid-item">
+          <label for="" style="font-size: 12px; color: #8341a2; max-width:150px;padding-right:0px;">Los campos marcados
+            con (*) son obligatorios.</label>
+        </div>
+        <div class="grid-item" style="visibility:hidden;">
+          <input type="text" name="" value="" class="text-input">
+        </div>
+        <div class="grid-item">
+          <input type="submit" name="" value="GUARDAR" class="btn-container btn-submit">
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
